@@ -3,18 +3,18 @@
 
 ;; Copyright (C) 2013 Amirreza Ghaderi
 ;; Copyright (C) 2017 Simon Zelazny
-;; Authors: Amirreza Ghaderi <amirreza.blog@gmail.com>, 
+;; Authors: Amirreza Ghaderi <amirreza.blog@gmail.com>,
 ;;          Simon Zelazny <zelazny@mailbox.org>
-;; Version: 0.1
+;; Version: 0.2
 ;; Keywords: syntax, highlight, theme, minimal, comment
-;; URL: 
+;; URL: https://github.com/pzel/commentary-theme
 ;; Compatibility: GNU Emacs 25.x
 
 ;;; Commentary:
 ;;
 ;; This theme is based on the minimal-light-theme.el (A minimal theme based on
 ;; xterm-256 color set), by Amirezza Ghaderi, the original source for which can
-;; no loger be found on the Web.  
+;; no loger be found on the Web.
 ;;
 ;; I've edited the theme to accentuate the following 3 'layers':
 ;;
@@ -30,65 +30,72 @@
 ;; Use of this source code is governed by the 'Revised BSD License'
 ;; which can be found in the LICENSE file.
 
-;;; Code:
-
 (deftheme commentary
   "A minimal theme with contrasting comments")
 
-(let ((black016  "#000000")
-      (white231  "#ffffff")
-      (yellow230 "#ffffdf")   ;; background
-      (gray243   "#767676")   ;; text, code
-      (gray249   "#b2b2b2")   ;; comments
-      (gray255   "#eeeeee")   ;; fringe
-      (red160    "#d70000")   ;; match
-      (blue066   "#5f8787")   ;; strings
-      (gray253   "#dadada")
-      (soapy     "#eaffff")
-      (strawberry "#f2e6e4")
-      (yellow187 "#dfdfaf"))  ;; current line
+(let* ((black016  "#000000")
+       (white231  "#ffffff")
+       (yellow230 "#ffffdf")   ;; background
+       (gray243   "#767676")   ;; text, code
+       (gray249   "#b2b2b2")   ;; comments
+       (gray255   "#eeeeee")   ;; fringe
+       (red160    "#d70000")   ;; match
+       (blue066   "#5f8787")   ;; strings
+       (gray253   "#dadada")
+       (soapy     "#eaffff")
+       (strawberry "#f2e6e4")
+       (yellow187 "#dfdfaf")   ;; current line (unused)
+       (default-layer `((t (:foreground ,black016 :background ,white231))))
+       (commentary-layer `((t (:foreground ,red160 :background ,white231))))
+       (string-layer `((t (:foreground ,black016 :background ,yellow230))))
+       (bold-layer `((t (:foreground ,black016 :weight bold))))
+      )  
 
 
   ;; Set faces
   (custom-theme-set-faces
    'commentary
-   
-   `(default ((t (:foreground ,black016 :background ,white231))))
+
+   `(default ,default-layer)
    `(cursor  ((t (:background ,black016))))
-   
-   ;; Highlighting faces
-   `(fringe    ((t (:background ,gray255))))   
+
+   ;; Highlighting
+   `(fringe    ((t (:background ,gray255))))
    `(highlight ((t (:background ,white231))))
    `(region    ((t (:background ,yellow187))))
-   
-   ;; Font lock faces
-   ;;   `(font-lock-string-face        ((t (:foreground ,blue066))))
-   `(font-lock-string-face        ((t (:foreground ,black016 :background ,yellow230))))
-   `(font-lock-comment-face       ((t (:foreground ,red160 :background ,white231))))
-   `(font-lock-constant-face      ((t (:foreground ,black016))))
-   `(font-lock-function-name-face ((t (:foreground ,black016 :weight bold))))
-   `(font-lock-variable-name-face ((t (:foreground ,black016))))
-   `(font-lock-builtin-face       ((t (:foreground ,black016))))
-   `(font-lock-keyword-face       ((t (:foreground ,black016))))
-   `(font-lock-type-face          ((t (:foreground ,black016))))
 
-   ;;parens
-   `(show-paren-mismatch   ((t (:foreground ,blue066 :background ,gray255 :weight bold))))
-   `(show-paren-match      ((t (:foreground ,red160  :background ,gray255 :weight bold))))
-	
-   ;; line numbers, current line, mode-line
-   ;`(hl-line-face ((t (:background ,red160 :weight bold))))
+   ;; Comments, documentation are contrastive
+   `(font-lock-comment-face ,commentary-layer)
+   `(font-lock-doc-face ,commentary-layer)
+
+   ;; String literals are highlighted
+   `(font-lock-string-face ,string-layer)
+
+   ;; Defintions are set in bold
+   `(font-lock-function-name-face ,bold-layer)
+
+   ;; Everything else belongs in the normal layer
+   `(font-lock-constant-face      ,default-layer)
+   `(font-lock-variable-name-face ,default-layer)
+   `(font-lock-builtin-face       ,default-layer)
+   `(font-lock-keyword-face       ,default-layer)
+   `(font-lock-type-face          ,default-layer)
+
+   ;; Parentheses
+   `(show-paren-mismatch
+     ((t (:foreground ,blue066 :background ,gray255 :weight bold))))
+   `(show-paren-match
+     ((t (:foreground ,red160  :background ,gray255 :weight bold))))
+
+   ;; Line numbers, current line, mode-line
    `(hl-line      ((t (:background ,yellow187))))  ;;current line
    `(linum        ((t (:background ,gray253))))    ;;line numbers
-   ;;   `(mode-line    ((t (:foreground ,yellow230 :background ,gray243 :box nil))))
-   
-   ;; web-mode
-   `(web-mode-html-tag-face          ((t (:foreground ,gray243 :weight bold))))
-   `(web-mode-html-attr-name-face    ((t (:foreground ,gray243 ))))
-   `(web-mode-css-property-name-face ((t (:foreground ,gray243 :weight bold))))
-   `(web-mode-keyword-face           ((t (:foreground ,gray243 :weight bold))))
-   `(web-mode-builtin-face           ((t (:foreground ,gray243 :weight bold))))
-   
+
+   ;; Coloring for external modes
+   ;; Elixir-mode
+   `(elixir-attribute-face ,default-layer)
+   `(elixir-atom-face ,default-layer)
+
    )
 
   ;; Set variables
@@ -99,5 +106,5 @@
 
 ;; Local Variables:
 ;; ----no-byte-compile: t
-;; End:    
+;; End:
 ;;; commentary-theme.el ends here
