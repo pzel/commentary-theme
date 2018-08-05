@@ -5,30 +5,34 @@
 ;; Copyright (C) 2017-18 Simon Zelazny
 ;; Authors: Amirreza Ghaderi <amirreza.blog@gmail.com>,
 ;;          Simon Zelazny <zelazny@mailbox.org>
-;; Version: 0.2.1
-;; Keywords: syntax, highlight, theme, minimal, comment
+;; Version: 0.2.2
 ;; URL: https://github.com/pzel/commentary-theme
 ;; Compatibility: GNU Emacs 25.x
 
 ;;; Commentary:
+
+;; This is a high-contrast theme designed to accentuate three visual 'layers':
 ;;
-;; This theme is based on the minimal-light-theme.el (A minimal theme based on
-;; xterm-256 color set), by Amirezza Ghaderi, the original source for which can
-;; no loger be found on the Web.
-;;
-;; I've edited the theme to accentuate the following 3 'layers':
-;;
-;; 1) Comments are in red. The intent is for comments to stand out!  Use them
+;; 1) Comments are in red.  The intent is for comments to stand out!  Use them
 ;; sparingly, to draw the reader's attention to problematic or tricky code.
 ;;
 ;; 2) Strings are furnished with a light yellow background, so it's easier to
 ;; track where they start and end.
 ;;
-;; 3) Function definitions (in Erlang/Elixir) are in bold.
+;; 3) Function definitions are in bold.
+
+
+;;; Credits:
+
+;; This theme is based on minimal-light-theme.el by Amirezza Ghaderi, the
+;; original source for which can no loger be found on the Web.
+
 
 ;;; License:
 ;; Use of this source code is governed by the 'Revised BSD License'
 ;; which can be found in the LICENSE file.
+
+;;; Code:
 
 (deftheme commentary
   "A minimal theme with contrasting comments")
