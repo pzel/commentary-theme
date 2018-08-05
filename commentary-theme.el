@@ -2,7 +2,7 @@
 ;; This file is not part of GNU Emacs.
 
 ;; Copyright (C) 2013 Amirreza Ghaderi
-;; Copyright (C) 2017 Simon Zelazny
+;; Copyright (C) 2017-18 Simon Zelazny
 ;; Authors: Amirreza Ghaderi <amirreza.blog@gmail.com>,
 ;;          Simon Zelazny <zelazny@mailbox.org>
 ;; Version: 0.2
@@ -21,7 +21,7 @@
 ;; 1) Comments are in red. The intent is for comments to stand out!  Use them
 ;; sparingly, to draw the reader's attention to problematic or tricky code.
 ;;
-;;  2) Strings are furnished with a light yellow background, so it's easier to
+;; 2) Strings are furnished with a light yellow background, so it's easier to
 ;; track where they start and end.
 ;;
 ;; 3) Function definitions (in Erlang/Elixir) are in bold.
@@ -49,7 +49,7 @@
        (commentary-layer `((t (:foreground ,red160 :background ,white231))))
        (string-layer `((t (:foreground ,black016 :background ,yellow230))))
        (bold-layer `((t (:foreground ,black016 :weight bold))))
-      )  
+      )
 
 
   ;; Set faces
