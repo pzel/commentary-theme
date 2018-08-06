@@ -5,7 +5,7 @@
 ;; Copyright (C) 2017-18 Simon Zelazny
 ;; Authors: Amirreza Ghaderi <amirreza.blog@gmail.com>,
 ;;          Simon Zelazny <zelazny@mailbox.org>
-;; Version: 0.2.2
+;; Version: 0.3
 ;; URL: https://github.com/pzel/commentary-theme
 ;; Compatibility: GNU Emacs 25.x
 
@@ -105,6 +105,12 @@
   ;; Set variables
   (custom-theme-set-variables 'commentary)
 )
+
+;;;###autoload
+(when load-file-name
+  (add-to-list 'custom-theme-load-path
+               (file-name-as-directory
+                (file-name-directory load-file-name))))
 
 (provide-theme 'commentary)
 
