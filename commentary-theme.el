@@ -5,7 +5,7 @@
 ;; Copyright (C) 2017-18 Simon Zelazny
 ;; Authors: Amirreza Ghaderi <amirreza.blog@gmail.com>,
 ;;          Simon Zelazny <zelazny@mailbox.org>
-;; Version: 0.3
+;; Version: 0.3.1
 ;; URL: https://github.com/pzel/commentary-theme
 ;; Compatibility: GNU Emacs 25.x
 
@@ -113,6 +113,7 @@
                 (file-name-directory load-file-name))))
 
 (provide-theme 'commentary)
+(provide 'commentary-theme)
 
 ;; Local Variables:
 ;; ----no-byte-compile: t
