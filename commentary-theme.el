@@ -1,13 +1,13 @@
-;;; commentary-theme.el --- A minimal theme with contrasting comments
-;; This file is not part of GNU Emacs.
+;;; commentary-theme.el ---  A minimal theme with contrasting comments  -*- lexical-binding: t; -*-
 
+;; This file is not part of GNU Emacs.
 ;; Copyright (C) 2013 Amirreza Ghaderi
 ;; Copyright (C) 2017-18 Simon Zelazny
 ;; Authors: Amirreza Ghaderi <amirreza.blog@gmail.com>,
 ;;          Simon Zelazny <zelazny@mailbox.org>
-;; Version: 0.3.1
+;; Version: 0.3.2
 ;; URL: https://github.com/pzel/commentary-theme
-;; Compatibility: GNU Emacs 25.x
+;; Package-Requires: ((emacs "24"))
 
 ;;; Commentary:
 
