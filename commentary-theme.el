@@ -5,7 +5,7 @@
 ;; Copyright (C) 2017-18 Simon Zelazny
 ;; Authors: Amirreza Ghaderi <amirreza.blog@gmail.com>,
 ;;          Simon Zelazny <zelazny@mailbox.org>
-;; Version: 0.3.2
+;; Version: 0.4.0
 ;; URL: https://github.com/pzel/commentary-theme
 ;; Package-Requires: ((emacs "24"))
 
@@ -49,8 +49,8 @@
        (soapy     "#eaffff")
        (strawberry "#f2e6e4")
        (yellow187 "#dfdfaf")   ;; current line (unused)
-       (default-layer `((t (:foreground ,black016 :background ,white231))))
-       (commentary-layer `((t (:foreground ,red160 :background ,white231))))
+       (default-layer `((t (:foreground ,black016)))) ;; :background ,white231))))
+       (commentary-layer `((t (:foreground ,red160)))) ;; :background ,white231))))
        (string-layer `((t (:foreground ,black016 :background ,yellow230))))
        (bold-layer `((t (:foreground ,black016 :weight bold))))
       )
