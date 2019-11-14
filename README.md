@@ -17,19 +17,16 @@ In a running Emacs instance, type:
 Then, run `M-x load-theme`, `Enter`, `commentary-theme`, and `Enter` again.
 
 
-
-### Declarative installation
+#### Declarative installation
 
 With [use-package](https://github.com/jwiegley/use-package), you can ensure the
-theme is installed before using it:
+theme is installed before loading it:
 
 ```
 ;; ~/.emacs or ~/.emacs.d/init.el
+
 (use-package commentary-theme
   :ensure t)
-
-;; (...)
-
 (load-theme 'commentary t)
 ```
 
