@@ -2,10 +2,10 @@
 
 ;; This file is not part of GNU Emacs.
 ;; Copyright (C) 2013 Amirreza Ghaderi
-;; Copyright (C) 2017-18 Simon Zelazny
+;; Copyright (C) 2017-21 Simon Zelazny
 ;; Authors: Amirreza Ghaderi <amirreza.blog@gmail.com>,
 ;;          Simon Zelazny <zelazny@mailbox.org>
-;; Version: 0.4.0
+;; Version: 0.4.1
 ;; URL: https://github.com/pzel/commentary-theme
 ;; Package-Requires: ((emacs "24"))
 
@@ -13,8 +13,7 @@
 
 ;; This is a high-contrast theme designed to accentuate three visual 'layers':
 ;;
-;; 1) Comments are in red.  The intent is for comments to stand out!  Use them
-;; sparingly, to draw the reader's attention to problematic or tricky code.
+;; 1) Comments are in red.  The intent is for comments to stand out!
 ;;
 ;; 2) Strings are furnished with a light yellow background, so it's easier to
 ;; track where they start and end.
@@ -37,36 +36,33 @@
 (deftheme commentary
   "A minimal theme with contrasting comments")
 
-(let* ((black016  "#000000")
-       (white231  "#ffffff")
-       (yellow230 "#ffffdf")   ;; background
-       (gray243   "#767676")   ;; text, code
-       (gray249   "#b2b2b2")   ;; comments
-       (gray255   "#eeeeee")   ;; fringe
-       (red160    "#d70000")   ;; match
-       (blue066   "#5f8787")   ;; strings
-       (gray253   "#dadada")
-       (soapy     "#eaffff")
-       (strawberry "#f2e6e4")
-       (yellow187 "#dfdfaf")   ;; current line (unused)
-       (default-layer `((t (:foreground ,black016)))) ;; :background ,white231))))
-       (commentary-layer `((t (:foreground ,red160)))) ;; :background ,white231))))
-       (string-layer `((t (:foreground ,black016 :background ,yellow230))))
-       (bold-layer `((t (:foreground ,black016 :weight bold))))
-      )
+(let* ((black        "#000000")
+       (light-gray   "#eeeeee")
+       (medium-gray  "#dadada")
+       (light-yellow "#ffffdf")
+       (dark-yellow  "#dcdca9")
+       (red          "#d70000")
 
+       (cursor-background black)
+       (fringe-background light-gray)
+       (highlight-background light-yellow)
+       (region-background dark-yellow)
+
+       (default-layer `((t (:foreground ,black :background ,(face-attribute 'default :background)))))
+       (commentary-layer `((t (:foreground ,red :background ,(face-attribute 'default :background)))))
+       (string-layer `((t (:foreground ,black :background ,light-yellow))))
+       (bold-layer `((t (:foreground ,black :weight bold)))))
 
   ;; Set faces
   (custom-theme-set-faces
    'commentary
-
    `(default ,default-layer)
-   `(cursor  ((t (:background ,black016))))
+   `(cursor  ((t (:background ,cursor-background))))
 
    ;; Highlighting
-   `(fringe    ((t (:background ,gray255))))
-   `(highlight ((t (:background ,white231))))
-   `(region    ((t (:background ,yellow187))))
+   `(fringe    ((t (:background ,fringe-background))))
+   `(highlight ((t (:background ,highlight-background))))
+   `(region    ((t (:background ,region-background))))
 
    ;; Comments, documentation are contrastive
    `(font-lock-comment-face ,commentary-layer)
@@ -87,19 +83,18 @@
 
    ;; Parentheses
    `(show-paren-mismatch
-     ((t (:foreground ,blue066 :background ,gray255 :weight bold))))
+     ((t (:foreground ,red :background ,light-gray :weight bold))))
    `(show-paren-match
-     ((t (:foreground ,red160  :background ,gray255 :weight bold))))
+     ((t (:foreground ,black  :background ,dark-yellow :weight bold))))
 
    ;; Line numbers, current line, mode-line
-   `(hl-line      ((t (:background ,yellow187))))  ;;current line
-   `(linum        ((t (:background ,gray253))))    ;;line numbers
+   `(hl-line      ((t (:background ,dark-yellow))))  ;;current line
+   `(linum        ((t (:background ,medium-gray))))    ;;line numbers
 
-   ;; Coloring for external modes
+   ;;; Coloring for other major modes
    ;; Elixir-mode
    `(elixir-attribute-face ,default-layer)
    `(elixir-atom-face ,default-layer)
-
    )
 
   ;; Set variables
